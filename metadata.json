@@ -1,6 +1,6 @@
 {
   "name": "UziLink",
-  "description": "AI-powered B2B marketplace connecting textile waste generators with recyclers and manufacturers for circular economy solutions.",
+  "description": "AI-powered textile waste marketplace for upcycling and EPR compliance.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }
