@@ -3,6 +3,8 @@ import { api, setToken } from "../lib/api.js";
 import { UserProfile } from "../types.js";
 import { Mail, Lock, User as UserIcon, Building, MapPin, Eye, EyeOff, ShieldCheck } from "lucide-react";
 import { motion } from "motion/react";
+import { GoogleLogin } from "@react-oauth/google";
+import { AuthService } from "../services/authService.js";
 
 interface AuthCardProps {
   onSuccess: (user: UserProfile) => void;
@@ -25,6 +27,7 @@ export const AuthCard: React.FC<AuthCardProps> = ({ onSuccess, showToast }) => {
   const [role, setRole] = useState<"SELLER" | "RECYCLER" | "MANUFACTURER" | "EPR">("SELLER");
   const [organizationName, setOrganizationName] = useState("");
   const [location, setLocation] = useState("");
+  const [rememberMe, setRememberMe] = useState(false);
 
   const handleAuthSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -32,23 +35,17 @@ export const AuthCard: React.FC<AuthCardProps> = ({ onSuccess, showToast }) => {
 
     try {
       if (isLogin) {
-        const response = await api.login({ email, password });
-        setToken(response.token);
-        onSuccess(response.user);
-        showToast(`Welcome back, ${response.user.name}!`, "success");
+        const result = await AuthService.loginWithEmail(email, password);
+        onSuccess(result.user);
+        showToast(`Welcome back, ${result.user.name}!`, "success");
       } else {
-        const rDetails = {
+        const result = await AuthService.registerWithEmail(email, password, {
           name,
-          email,
-          password,
           role,
           organizationName,
           location
-        };
-
-        const response = await api.register(rDetails);
-        setToken(response.token);
-        onSuccess(response.user);
+        });
+        onSuccess(result.user);
         
         if (role === "RECYCLER" || role === "MANUFACTURER") {
           showToast("Account registered! Access is pending brief administrative review.", "info");
@@ -61,6 +58,23 @@ export const AuthCard: React.FC<AuthCardProps> = ({ onSuccess, showToast }) => {
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleGoogleSuccess = async (credentialResponse: any) => {
+    setLoading(true);
+    try {
+      const result = await AuthService.loginWithGoogle();
+      onSuccess(result.user);
+      showToast(`Welcome, ${result.user.name}!`, "success");
+    } catch (err: any) {
+      showToast(err.message || "Google Sign-In failed", "error");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleGoogleError = () => {
+    showToast("Google Sign-In failed", "error");
   };
 
   const handleForgotPasswordSubmit = async (e: React.FormEvent) => {
@@ -189,6 +203,19 @@ export const AuthCard: React.FC<AuthCardProps> = ({ onSuccess, showToast }) => {
               </div>
             </div>
 
+            {isLogin && (
+              <div className="flex items-center gap-2">
+                <input
+                  type="checkbox"
+                  id="remember-me"
+                  checked={rememberMe}
+                  onChange={(e) => setRememberMe(e.target.checked)}
+                  className="w-4 h-4 rounded border-slate-600 text-teal-500 focus:ring-teal-500"
+                />
+                <label htmlFor="remember-me" className="text-xs text-slate-400">Remember me</label>
+              </div>
+            )}
+
             {!isLogin && (
               <motion.div
                 initial={{ opacity: 0, height: 0 }}
@@ -260,6 +287,26 @@ export const AuthCard: React.FC<AuthCardProps> = ({ onSuccess, showToast }) => {
                 </div>
               ) : isLogin ? "Sign In to marketplace" : "Register and continue"}
             </button>
+
+            {isLogin && (
+              <>
+                <div className="flex items-center gap-2 my-4">
+                  <div className="flex-1 h-px bg-slate-800" />
+                  <span className="text-xs text-slate-500">Or continue with</span>
+                  <div className="flex-1 h-px bg-slate-800" />
+                </div>
+
+                <div className="flex justify-center">
+                  <GoogleLogin
+                    onSuccess={handleGoogleSuccess}
+                    onError={handleGoogleError}
+                    text="signin_with"
+                    size="large"
+                    theme="dark"
+                  />
+                </div>
+              </>
+            )}
           </form>
 
           {/* Authentication actions info */}

@@ -1,24 +1,25 @@
 const API_BASE = "/api";
+const TOKEN_KEY = "uzilink_firebase_token";
 
 /**
- * Read current token
+ * Read current token (Firebase ID token)
  */
 export function getToken(): string | null {
-  return localStorage.getItem("uzilink_token");
+  return localStorage.getItem(TOKEN_KEY);
 }
 
 /**
- * Write token
+ * Write token (Firebase ID token)
  */
 export function setToken(token: string) {
-  localStorage.setItem("uzilink_token", token);
+  localStorage.setItem(TOKEN_KEY, token);
 }
 
 /**
  * Remove token on signout
  */
 export function removeToken() {
-  localStorage.removeItem("uzilink_token");
+  localStorage.removeItem(TOKEN_KEY);
 }
 
 /**

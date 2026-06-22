@@ -9,6 +9,7 @@ export interface UserProfile {
   verified: boolean;
   organizationName?: string;
   location?: string;
+  photoURL?: string; // Profile photo from Firebase
   createdAt?: string;
 }
 

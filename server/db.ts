@@ -10,6 +10,8 @@ export interface User {
   name: string;
   email: string;
   passwordHash: string;
+  firebaseId?: string; // Firebase UID for Firebase auth users
+  photoURL?: string; // Profile photo URL from Firebase
   role: "SELLER" | "RECYCLER" | "MANUFACTURER" | "EPR" | "ADMIN";
   verified: boolean;
   approvalStatus: "PENDING" | "APPROVED" | "REJECTED"; // relevant for Recyclers and Manufacturers
