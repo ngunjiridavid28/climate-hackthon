@@ -1,0 +1,227 @@
+{
+  "users": [
+    {
+      "id": "u-admin",
+      "name": "UziLink System Admin",
+      "email": "admin@uzilink.com",
+      "passwordHash": "512eb73d7e0ae0277397f16dba618335:372ad21156baa853effca9dd2ed3eabf88bf46481e7f90dfe7155b30a0018a33ce62fe8bee471bfcde96ee16d2184fc24d6394cc3850602f8d14e7d684556b82",
+      "role": "ADMIN",
+      "verified": true,
+      "approvalStatus": "APPROVED",
+      "organizationName": "UziLink Ltd",
+      "location": "Nairobi, HQ",
+      "createdAt": "2026-06-22T14:20:20.887Z"
+    },
+    {
+      "id": "u-seller-1",
+      "name": "David mitumba Trader",
+      "email": "seller@uzilink.com",
+      "passwordHash": "dc2ed74434743cc444ae41e20b750abd:2831c88e9b74f671ce2e2e118b22d16befaed18f4051e6b7aefa8115328c099b2a0e04c1b2df9236e19cf31af88b44f140c4c9ca329bb182e5981456ce2d23ec",
+      "role": "SELLER",
+      "verified": true,
+      "approvalStatus": "APPROVED",
+      "organizationName": "Nairobi Mitumba Sorting",
+      "location": "Gikomba Market, Nairobi",
+      "createdAt": "2026-06-22T14:20:20.891Z"
+    },
+    {
+      "id": "u-recycler-1",
+      "name": "Green Loop Fiber Recyclers",
+      "email": "recycler@uzilink.com",
+      "passwordHash": "f8829646b835a97f6aadd53c21ca9ab6:a5dad182756214d61ed311017cf054380ac685237732369d3e63d108774df803f576fa3ba1b3b2bd53a264ee2d0b5622017b880287c4e39eece85e0b1a703af5",
+      "role": "RECYCLER",
+      "verified": true,
+      "approvalStatus": "APPROVED",
+      "organizationName": "Green Loop Textile Solutions",
+      "location": "Industrial Area, Nairobi",
+      "createdAt": "2026-06-22T14:20:20.891Z"
+    },
+    {
+      "id": "u-manuf-1",
+      "name": "Rivatex East Africa",
+      "email": "manufacturer@uzilink.com",
+      "passwordHash": "d910107423d6a625c461bc732ec3dc12:5635328e27174a320adccd0be4d81ba33564c29f9087c34d3d9f67129d45d077984210368ea634733a8551e2401953b6bfa22a07ecc656d3c7912f5a6574c9ef",
+      "role": "MANUFACTURER",
+      "verified": true,
+      "approvalStatus": "APPROVED",
+      "organizationName": "Rivatex Textile Millers",
+      "location": "Eldoret, Kenya",
+      "createdAt": "2026-06-22T14:20:20.892Z"
+    },
+    {
+      "id": "u-epr-1",
+      "name": "Joyce Kamau (KEPRO)",
+      "email": "epr@uzilink.com",
+      "passwordHash": "ded089ef9cfe80715ca0396d40642bf8:985aebf99591f3f33cc1ef37b9600f1033bb4c6f4b5f05ee38163f197edf850cd588b6879e159f133ec81286cb0e26c90e44f3603b6e4b9a2b73849a26397294",
+      "role": "EPR",
+      "verified": true,
+      "approvalStatus": "APPROVED",
+      "organizationName": "Kenya Extended Producer Responsibility Org",
+      "location": "Gigiri, Nairobi",
+      "createdAt": "2026-06-22T14:20:20.893Z"
+    }
+  ],
+  "listings": [
+    {
+      "id": "list-1",
+      "sellerId": "u-seller-1",
+      "sellerName": "David Mitumba Trader",
+      "weightKg": 450,
+      "quantity": 9,
+      "location": "Gikomba Market, Nairobi",
+      "imageUrl": "https://images.unsplash.com/photo-1542496658-e33a6d0d50f6?auto=format&fit=crop&q=80&w=600",
+      "fabricType": "Denim & Twill",
+      "material": "100% Cotton & Denim Blends",
+      "condition": "Post-consumer Textile Waste (Sorted)",
+      "color": "Blue, Teal, Charcoal",
+      "texture": "Rough, Heavy weave",
+      "recyclabilityScore": 84,
+      "estimatedPriceKES": 27500,
+      "confidence": 94,
+      "recommendedIndustries": [
+        "Eco-Jeans Manufacturing",
+        "Insulation & Acoustic Panel Production",
+        "Upholstery & Heavy Duty Bags"
+      ],
+      "upcyclingIdeas": [
+        "Denim patchwork tote bags",
+        "Premium recycled denim yarn",
+        "Thermal isolation boards"
+      ],
+      "carbonSavingsKg": 1350,
+      "description": "Batch of sorted post-consumer denim and denim waste cutouts. Sorted carefully, stripped of metal rivets, buttons, and zippers. Excellent candidate for mechanical recycling back into cotton yarn or high-strength insulation batts.",
+      "status": "PUBLISHED",
+      "viewsCount": 24,
+      "createdAt": "2026-06-19T14:20:20.893Z"
+    },
+    {
+      "id": "list-2",
+      "sellerId": "u-seller-1",
+      "sellerName": "David Mitumba Trader",
+      "weightKg": 280,
+      "quantity": 5,
+      "location": "Nanyuki Sorting Depot",
+      "imageUrl": "https://images.unsplash.com/photo-1523381210434-271e8be1f52b?auto=format&fit=crop&q=80&w=600",
+      "fabricType": "Knit Jersey",
+      "material": "Polyester-Cotton Blends (60/40)",
+      "condition": "Pre-consumer Manufacturing Cutting Scraps",
+      "color": "Multi-color Mixed",
+      "texture": "Soft, Stretchy",
+      "recyclabilityScore": 72,
+      "estimatedPriceKES": 14000,
+      "confidence": 88,
+      "recommendedIndustries": [
+        "Wiping rags & industrial absorbents",
+        "Non-woven textile machinery",
+        "Automotive seat stuffing"
+      ],
+      "upcyclingIdeas": [
+        "Mechanically shredded fluff for matresses",
+        "Industrial oil absorption pillows",
+        "Low-cost cleaning wipers"
+      ],
+      "carbonSavingsKg": 620,
+      "description": "Fresh manufacturing scraps and offcuts of knit jersey sports apparel. Pure dry waste, clean and unwashed. Highly elastic fibers ready for industrial non-woven felt processing or shredding.",
+      "status": "PUBLISHED",
+      "viewsCount": 15,
+      "createdAt": "2026-06-21T14:20:20.893Z"
+    },
+    {
+      "id": "list-3",
+      "sellerId": "u-seller-1",
+      "sellerName": "David Mitumba Trader",
+      "weightKg": 1200,
+      "quantity": 24,
+      "location": "Mombasa Port Warehouse",
+      "imageUrl": "https://images.unsplash.com/photo-1563161402-8411cf22c882?auto=format&fit=crop&q=80&w=600",
+      "fabricType": "Synthetic Fleece",
+      "material": "100% Recycled Polyester (PET)",
+      "condition": "Bale Waste - Impure Post-consumer",
+      "color": "Black & Dark Gray",
+      "texture": "Soft, Fuzzy, Medium Pile",
+      "recyclabilityScore": 92,
+      "estimatedPriceKES": 68000,
+      "confidence": 96,
+      "recommendedIndustries": [
+        "Fiber-to-fiber polyester spinning",
+        "Carpet and rug manufacturing",
+        "Geotextile fabric weaving"
+      ],
+      "upcyclingIdeas": [
+        "Polyester pellet compounding",
+        "Outdoor insulation blankets",
+        "High-durability geo-membranes"
+      ],
+      "carbonSavingsKg": 4200,
+      "description": "Bulk post-consumer polar fleece jackets and winter apparel scraps sorted specifically by fiber content. 100% polyester composition supports direct chemical recycling (depolymerization) or mechanical thermal pelletizing.",
+      "status": "PUBLISHED",
+      "viewsCount": 8,
+      "createdAt": "2026-06-22T14:20:20.893Z"
+    }
+  ],
+  "messages": [
+    {
+      "id": "msg-1",
+      "senderId": "u-recycler-1",
+      "senderName": "Green Loop Fiber Recyclers",
+      "senderRole": "RECYCLER",
+      "receiverId": "u-seller-1",
+      "receiverName": "David Mitumba Trader",
+      "content": "Hello David, we saw your sorted Denim batch (list-1). We are highly interested in buying the entire 450 Kg batch. Do you offer transportation to Gikomba or should we arrange pickup?",
+      "listingId": "list-1",
+      "createdAt": "2026-06-20T14:20:20.893Z",
+      "read": true
+    },
+    {
+      "id": "msg-2",
+      "senderId": "u-seller-1",
+      "senderName": "David Mitumba Trader",
+      "senderRole": "SELLER",
+      "receiverId": "u-recycler-1",
+      "receiverName": "Green Loop Fiber Recyclers",
+      "content": "Hi Green Loop! Thanks for reaching out. We standardly offer pickup from our Gikomba depot, but we can arrange delivery for an extra KES 2,500. Let me know if that works for you!",
+      "listingId": "list-1",
+      "createdAt": "2026-06-21T14:20:20.893Z",
+      "read": false
+    }
+  ],
+  "buyerRequests": [
+    {
+      "id": "req-1",
+      "buyerId": "u-recycler-1",
+      "buyerName": "Green Loop Fiber Recyclers",
+      "buyerRole": "RECYCLER",
+      "listingId": "list-1",
+      "listingTitle": "Denim & Twill (450 Kg)",
+      "message": "Bid submitted for KES 27,500. Standard industrial recycling contract terms requested.",
+      "status": "PENDING",
+      "createdAt": "2026-06-20T14:20:20.893Z"
+    }
+  ],
+  "notifications": [
+    {
+      "id": "notif-1",
+      "userId": "u-seller-1",
+      "title": "New Bid Received",
+      "message": "Green Loop Fiber Recyclers requested a quotation for your Denim listing.",
+      "read": false,
+      "createdAt": "2026-06-20T14:20:20.893Z"
+    },
+    {
+      "id": "notif-2",
+      "userId": "u-admin",
+      "title": "New Registration Approval Needed",
+      "message": "Eco-Weave Mills (Manufacturer) registered and is pending document review.",
+      "read": false,
+      "createdAt": "2026-06-22T14:20:20.893Z"
+    }
+  ],
+  "auditLogs": [
+    {
+      "id": "audit-1",
+      "action": "SYSTEM_START",
+      "details": "UziLink MVP Database populated and seeded successfully.",
+      "timestamp": "2026-06-22T14:20:20.893Z"
+    }
+  ]
+}
