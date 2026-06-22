@@ -130,8 +130,10 @@ export const Sidebar: React.FC<SidebarProps> = ({
         animate={{ x: isOpen ? 0 : -280 }}
         transition={{ type: "spring", stiffness: 300, damping: 30 }}
         className="fixed lg:static left-0 top-16 bottom-0 lg:top-0 w-64 h-[calc(100vh-4rem)] lg:h-screen bg-surface border-r border-border overflow-y-auto z-40 lg:z-auto"
+        role="complementary"
+        aria-label="Main Navigation"
       >
-        <nav className="p-4 space-y-1">
+        <nav className="p-4 space-y-1" aria-label="Navigation Menu">
           {visibleItems.map((item) => (
             <div key={item.id}>
               <button
@@ -141,11 +143,14 @@ export const Sidebar: React.FC<SidebarProps> = ({
                     toggleExpand(item.id);
                   }
                 }}
-                className={`w-full flex items-center justify-between px-4 py-2.5 rounded-lg transition ${
+                className={`w-full flex items-center justify-between px-4 py-2.5 rounded-lg transition focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-surface ${
                   activeTab === item.id
                     ? "bg-primary/10 text-primary border border-primary/20"
                     : "text-foreground hover:bg-surface-alt text-foreground-muted hover:text-foreground"
                 }`}
+                aria-current={activeTab === item.id ? "page" : undefined}
+                aria-expanded={item.children ? expandedItems.has(item.id) : undefined}
+                aria-controls={item.children ? `submenu-${item.id}` : undefined}
               >
                 <span className="flex items-center gap-3 flex-1 text-left">
                   {item.icon}
@@ -157,6 +162,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                       rotate: expandedItems.has(item.id) ? 90 : 0
                     }}
                     transition={{ duration: 0.2 }}
+                    aria-hidden="true"
                   >
                     <ChevronRight className="w-4 h-4" />
                   </motion.div>
@@ -171,23 +177,28 @@ export const Sidebar: React.FC<SidebarProps> = ({
                     animate={{ opacity: 1, height: "auto" }}
                     exit={{ opacity: 0, height: 0 }}
                     className="overflow-hidden"
+                    id={`submenu-${item.id}`}
+                    role="region"
+                    aria-label={`${item.label} submenu`}
                   >
-                    <div className="py-1 pl-2">
+                    <ul className="py-1 pl-2">
                       {item.children.map((child) => (
-                        <button
-                          key={child.id}
-                          onClick={() => handleTabChange(child.id)}
-                          className={`w-full flex items-center gap-3 px-4 py-2 rounded-lg text-sm transition border-l-2 ${
-                            activeTab === child.id
-                              ? "bg-primary/5 text-primary border-l-primary"
-                              : "text-foreground-muted hover:text-foreground hover:bg-surface-alt border-l-transparent"
-                          }`}
-                        >
-                          <div className="w-1.5 h-1.5 rounded-full bg-current" />
-                          {child.label}
-                        </button>
+                        <li key={child.id}>
+                          <button
+                            onClick={() => handleTabChange(child.id)}
+                            className={`w-full flex items-center gap-3 px-4 py-2 rounded-lg text-sm transition border-l-2 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-surface ${
+                              activeTab === child.id
+                                ? "bg-primary/5 text-primary border-l-primary"
+                                : "text-foreground-muted hover:text-foreground hover:bg-surface-alt border-l-transparent"
+                            }`}
+                            aria-current={activeTab === child.id ? "page" : undefined}
+                          >
+                            <div className="w-1.5 h-1.5 rounded-full bg-current" aria-hidden="true" />
+                            {child.label}
+                          </button>
+                        </li>
                       ))}
-                    </div>
+                    </ul>
                   </motion.div>
                 )}
               </AnimatePresence>
