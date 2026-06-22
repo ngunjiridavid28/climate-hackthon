@@ -108,6 +108,20 @@ export function SplashScreen({ isVisible, onComplete }: SplashScreenProps) {
           </motion.p>
         </motion.div>
 
+        {/* Illustration Preview */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, delay: 0.8 }}
+          className="mt-2 w-64 h-40 rounded-lg border border-slate-700 overflow-hidden shadow-lg"
+        >
+          <img
+            src="/illustrations/textile-sorting.png"
+            alt="Textile Sorting"
+            className="w-full h-full object-cover"
+          />
+        </motion.div>
+
         {/* Loading Indicator */}
         <motion.div
           initial={{ opacity: 0 }}
