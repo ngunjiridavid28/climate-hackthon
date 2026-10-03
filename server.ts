@@ -1,4 +1,5 @@
 import express, { Response } from "express";
+import { createServer as createHttpServer } from "http";
 import path from "path";
 import dotenv from "dotenv";
 import { createServer as createViteServer } from "vite";
@@ -58,10 +59,15 @@ app.post("/api/notifications/read", requireAuth, (req: AuthenticatedRequest, res
  * Build Client & Framework Server integrations (Vite middleware or static fallback)
  */
 async function initializeServer() {
+  const httpServer = createHttpServer(app);
+
   if (process.env.NODE_ENV !== "production") {
     console.log("Starting server in DEVELOPMENT mode (Vite middleware integration)...");
     const vite = await createViteServer({
-      server: { middlewareMode: true },
+      server: {
+        middlewareMode: true,
+        hmr: { server: httpServer },
+      },
       appType: "spa",
     });
     app.use(vite.middlewares);
@@ -74,7 +80,7 @@ async function initializeServer() {
     });
   }
 
-  app.listen(PORT, "0.0.0.0", () => {
+  httpServer.listen(PORT, "0.0.0.0", () => {
     console.log(`UziLink environment booted and listending on: http://localhost:${PORT}`);
   });
 }
